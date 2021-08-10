@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text score;
-    public static int score_points = 100;
+    public int score_points;
 
     // Start is called before the first frame update
     void Start()
@@ -14,11 +14,20 @@ public class Score : MonoBehaviour
         score = GetComponent<Text>();
     }
 
+    public void update_score()
+    {
+        score_points += 1;
+        score.text = "Score: " + score_points;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        score.text = "Points: " + score_points.ToString();
-        Debug.Log(score.text);
+
+        var scoreGo = (GameObject)GameObject.FindWithTag("score: ");
+        var scoreComp = scoreGo.GetComponent<Scoring>();
+        scoreComp.update_score();
      
     }
 

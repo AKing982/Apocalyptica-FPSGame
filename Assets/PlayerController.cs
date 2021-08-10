@@ -50,6 +50,12 @@ public class PlayerController : MonoBehaviour
             playerAnim.Play("Walk_Static");
             playerAnim.speed = 2;
         }
+
+        // Player Melee animation
+        if(Input.GetKey(KeyCode.F))
+        {
+            playerAnim.Play("BowShoot");
+        }
     }
 
    
@@ -82,6 +88,15 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(new Vector3(-2f, 0.0f, 0.0f) * speed, ForceMode.VelocityChange);
         }
+
+        // Jump
+        if(Input.GetKey(KeyCode.Space))
+        {
+            playerRb.AddForce(new Vector3(0f, 2.5f, 0f), ForceMode.VelocityChange);
+        }
+
+  
+
 
         Vector3 movement = new Vector3(x_direction, 0.0f, z_direction);
 
